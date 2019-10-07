@@ -1,209 +1,88 @@
+<!DOCTYPE HTML>
+<!--
+	Retrospect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
 <head>
-    <title>NatAmE</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-
-    <script>
-        window.onload = function () {
-            // Variables
-            let baseDeDatos = [
-            {
-                id: 1,
-                nombre: 'Jabon',
-                precio: 7000
-            },
-            {
-                id: 2,
-                nombre: 'Crema humectante',
-                precio: 6500
-            },
-            {
-                id: 3,
-                nombre: 'Crema hidratante',
-                precio: 8900
-            },
-            {
-                id: 4,
-                nombre: 'Perfume',
-                precio: 40000
-            },
-            {
-                id: 5,
-                nombre: 'Shampoo',
-                precio: 17000
-            }
-
-            ]
-            let $items = document.querySelector('#items');
-            let carrito = [];
-            let total = 0;
-            let $carrito = document.querySelector('#carrito');
-            let $total = document.querySelector('#total');
-            // Funciones
-            function renderItems () {
-                for (let info of baseDeDatos) {
-                    // Estructura
-                    let miNodo = document.createElement('div');
-                    miNodo.classList.add('card', 'col-sm-4');
-                    // Body
-                    let miNodoCardBody = document.createElement('div');
-                    miNodoCardBody.classList.add('card-body');
-                    // Titulo
-                    let miNodoTitle = document.createElement('h5');
-                    miNodoTitle.classList.add('card-title');
-                    miNodoTitle.textContent = info['nombre'];
-                    // Precio
-                    let miNodoPrecio = document.createElement('p');
-                    miNodoPrecio.classList.add('card-text');
-                    miNodoPrecio.textContent = '$'+info['precio'] ;
-                    // Boton 
-                    let miNodoBoton = document.createElement('button');
-                    miNodoBoton.classList.add('carritoMas');
-                    miNodoBoton.textContent = '+';
-                    miNodoBoton.setAttribute('marcador', info['id']);
-                    miNodoBoton.addEventListener('click', anyadirCarrito);
-                    // Insertamos
-                    miNodoCardBody.appendChild(miNodoTitle);
-                    miNodoCardBody.appendChild(miNodoPrecio);
-                    miNodoCardBody.appendChild(miNodoBoton);
-                    miNodo.appendChild(miNodoCardBody);
-                    $items.appendChild(miNodo);
-                }
-            }
-            function anyadirCarrito () {
-                // Anyadimos el Nodo a nuestro carrito
-                carrito.push(this.getAttribute('marcador'))
-                // Calculo el total
-                calcularTotal();
-                // Renderizamos el carrito 
-                renderizarCarrito();
-
-            }
-
-            function renderizarCarrito () {
-                // Vaciamos todo el html
-                $carrito.textContent = '';
-                // Generamos los Nodos a partir de carrito
-                carrito.forEach(function (item, indice) {
-                    // Obtenemos el item que necesitamos de la variable base de datos
-                    let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-                        return itemBaseDatos['id'] == item;
-                    });
-                    // Creamos el nodo del item del carrito
-                    let miNodo = document.createElement('li');
-                    miNodo.classList.add('list-group-item', 'text-right');
-                    miNodo.textContent = `${miItem[0]['nombre']} - $${miItem[0]['precio']}   `;
-                    // Boton de borrar
-                    let miBoton = document.createElement('button');
-                    miBoton.classList.add('btn', 'carritoX');
-                    miBoton.textContent = 'X';
-                    miBoton.setAttribute('posicion', indice);
-                    miBoton.addEventListener('click', borrarItemCarrito);
-
-                    // Mezclamos nodos
-                    miNodo.appendChild(miBoton);
-                    $carrito.appendChild(miNodo);
-                })
-            }
-
-            function borrarItemCarrito () {
-                // Obtenemos la posicion que hay en el boton pulsado
-                let posicion = this.getAttribute('posicion');
-                // Borramos la posicion que nos interesa
-                carrito.splice(posicion, 1);
-                // volvemos a renderizar
-                renderizarCarrito();
-                // Calculamos de nuevo el precio
-                calcularTotal();
-            }
-
-            function calcularTotal () {
-                // Limpiamos precio anterior
-                total = 0;
-                // Recorremos el array del carrito
-                for (let item of carrito) {
-                    // De cada elemento obtenemos su precio
-                    let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-                        return itemBaseDatos['id'] == item;
-                    });
-                    total = total + miItem[0]['precio'];
-                }
-                // Formateamos el total para que solo tenga dos decimales
-                let totalDosDecimales = total.toFixed(2);
-                // Renderizamos el precio en el HTML
-                $total.textContent = totalDosDecimales;
-            }
-            // Eventos
-
-            // Inicio
-            renderItems();
-        } 
-    </script>
+	<title>Comprar</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
-<!-- Header -->
-<header id="header" class="skel-layers-fixed">
-    <h1><a href="index.html">NatAme</a></h1>
-    <a href="#nav">Menu</a>
-</header>
+<body>
 
-<!-- Nav -->
-<nav id="nav">
-    <ul class="links">
-        <li><a href="principal.html">Inicio</a></li>
+	<!-- Header -->
+	<header id="header" class="skel-layers-fixed">
+		<h1><a href="index.html">NATAME</a></h1>
+		<a href="#nav">Menu</a>
+	</header>
 
-    </ul>
-</nav>
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li><a href="principal.html">Menu Principal</a></li>
+			<li><a href="RegCliente.html">Registrar Cliente</a></li>
+			<form method="post" action="ServletOut">
+				<li><input type="submit" value="Cerrar Sesion" class="special" /></li>
+			</form>
+		</ul>
+	</nav>
 
-<!-- Main -->
-<section id="main" class="wrapper">
-    <div class="container">
-        <header class="major special">
-            <h2>PRODUCTOS</h2>
-            <p>Agregue al carro de compra, los productos que desee comprar.</p>
-        </header>
-        
-        <div class="row uniform 50%">
-            <!-- Elementos generados a partir del JSON -->
-            <div class="6u 12u$(xsmall)">
-                <main id="items" class="col-sm-4 row"></main>
-            </div>
-            <!-- Carrito -->
-            <div class="6u 12u$(xsmall)"> 
-                <form method="post" action="#">
-                    <h3>CARRO DE COMPRAS</h3>
-                    <!-- Elementos del carrito -->
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+			<header class="major special">
+				<h2>COMPRAR</h2>
+				<p>Selecciona una regional de nuestra tienda para realizar el pedido</p>
+			</header>
+			<section>
+				<h3>Seleccione</h3>
+				<form method="post" action="#">
+					<div class="row uniform 50%">
+						<div class="12u$">
+							<div class="select-wrapper">
+								<select name="category" id="category">
+									<option value="">- Regional -</option>
+									<option value="1">Manufacturing</option>
+									<option value="1">Shipping</option>
+									<option value="1">Administration</option>
+									<option value="1">Human Resources</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="12u$">
+							<ul class="actions">
+								<li><input type="submit" value="Buscar" class="special" /></li>
+								<li><input type="reset" value="Borrar" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</section>
+		</div>
+	</section>
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Universidad Distrital.</li>
+				<li>Images: <a href="http://unsplash.com">Unsplash</a>.</li>
+				<li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
+			</ul>
+		</div>
+	</footer>
 
-                    <ul id="carrito" class="list-group"></ul>
-                    <hr>
-                    <!-- Precio total -->
-                    <p >Total: &dollar;<span id="total"></span></p>
-                    <ul class="actions">
-                        <li><input type="submit" value="Comprar" class="special" /></li>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 
-                    </ul>
-                </div>
-            </div>
-            
-        </form>
-    </div>
-</section>
-<!-- Footer -->
-<footer id="footer">
-    <div class="inner">
-        <ul class="copyright">
-            <li>&copy; Universidad Distrital.</li>
-            <li>Images: <a href="http://unsplash.com">Unsplash</a>.</li>
-            <li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
-        </ul>
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script> 
 </body>
 </html>

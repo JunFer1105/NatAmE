@@ -5,7 +5,7 @@ public class Representante {
     private int id;
     private String nombre;
     private String apellido;
-    private String email="null";
+    private String email;
     private String genero;
     private String f_nacimiento;
     private String f_contrato;
@@ -28,6 +28,12 @@ public class Representante {
         this.cod_region = cod_region;
         this.id_master = id_master;
         this.k_rangoRep = k_rangoRep;
+        
+            
+    }
+
+    public Representante(int id) {
+        this.id = id;
     }
 
     public int getId() {

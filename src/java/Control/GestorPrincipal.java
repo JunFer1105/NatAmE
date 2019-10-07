@@ -24,18 +24,13 @@ public class GestorPrincipal {
         user=usuario;
         ConexionBD con=new ConexionBD(usuario,clave);
         conector=con.conexion();
-        
-        
-        try {
-            
+        try {           
             if(conector!=null){
                 st=conector.createStatement();
                 funciono=true;
             }
             this.excepcion=con.excepcion;
         } catch (SQLException ex) {
-            //Logger.getLogger(GestorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            
             System.out.println("No se pudo establecer coneccion");
         }
     }
@@ -60,6 +55,11 @@ public class GestorPrincipal {
     public ArrayList getProductos(){
         ProductoDAO prodDAO = new ProductoDAO(st);
         return prodDAO.obtenerProductos();
+    }
+    
+    public ArrayList getRegionales(){
+        RegionDAO regDAO = new RegionDAO(st);
+        return regDAO.getRegionales();
     }
    
 }

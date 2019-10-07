@@ -17,15 +17,18 @@ public class RepresentanteDAO {
     }
     
     public Representante cargarRepresentante(String user){
+        int id=0;
+        
         System.out.println(user);
         sentencia="SELECT * FROM SALESMAN WHERE O_CORREO_ELECTRONICO='"+user+"'"; 
         System.out.println(sentencia);
         try {
             rs=st.executeQuery(sentencia);
             System.out.println("consulta sobre representantes realizada CON EXITO");
+            representante = new Representante(id);
             while (rs.next()){
                 System.out.println("OBTENIENDO DATOS DE LA CONSULTA");
-                int id =rs.getInt("K_ID");
+                id =rs.getInt("K_ID");
                 String nombre=rs.getString("N_NOMBRES");
                 String apellido=rs.getString("N_APELLIDOS");
                 String email =rs.getString("O_CORREO_ELECTRONICO");
