@@ -3,7 +3,6 @@ package Servlet;
 import Control.GestorPrincipal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +14,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author elric
  */
-@WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
-public class ServletLogin extends HttpServlet {
+@WebServlet(name = "ServletRegCliente", urlPatterns = {"/ServletRegCliente"})
+public class ServletRegCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,16 +29,21 @@ public class ServletLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
         HttpSession session = request.getSession();
-        String usuario=request.getParameter("Identificacion");
-        String contra=request.getParameter("Clave");
-        System.out.println(usuario);
-        GestorPrincipal ges = new GestorPrincipal(usuario,contra);
+        GestorPrincipal ges=(GestorPrincipal)session.getAttribute("Gestor");
+        String clave1=request.getParameter("clave1");
+        String clave2=request.getParameter("clave2");
+        if (!clave1.equals(clave2)){
+            response.sendRedirect("RegCliente.html");
+        }
+        String nombre=request.getParameter("nombre");
+        String apellido=request.getParameter("apellido");
+        String telefono=request.getParameter("telefono");
+        String email=request.getParameter("eil");
+        String ciudad=request.getParameter("ciudad");
         
-        if (ges.funciono){
-            session.setAttribute("Gestor",ges);
+        String resultado=ges.regCliente(nombre, apellido, telefono, email, ciudad, clave2);
+        if(resultado.equals("funciono")){
             response.sendRedirect("principal.html");
         }else{
             try (PrintWriter out = response.getWriter()) {
@@ -62,17 +66,17 @@ public class ServletLogin extends HttpServlet {
 "		<h1><a href=\"index.html\">NatAme</a></h1>\n" +
 "	</header>");
             out.println("<h2>Ha ocurrido un error</h2>");
-            out.println("<p>El motor de base de datos ORACLE dice: <strong>" + ges.excepcion + "</strong></p>");
+            out.println("<p>El motor de base de datos ORACLE dice: <strong>" + resultado + "</strong></p>");
             out.println("<ul class=\"actions\">\n" +
-"		<li><a href=\"index.html\" class=\"button alt small\">Regresar</a></li>\n" +
+"		<li><a href=\"principal.html\" class=\"button alt small\">Regresar</a></li>\n" +
 "		</ul>");
             
             out.println("</body>");
             out.println("</html>");
         }
         }
-           
-        }
+        
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
