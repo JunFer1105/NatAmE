@@ -24,6 +24,7 @@ public class RegionDAO {
     
     public ArrayList getRegionales(){
         String consulta="SELECT k_codigo,n_nombre from ZONE";
+        System.out.println(consulta);
         try {
             rs=st.executeQuery(consulta);
             regiones=new ArrayList();
