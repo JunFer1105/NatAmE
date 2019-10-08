@@ -1,59 +1,60 @@
 package Modelo;
 
 public class Producto {
-    private int k_codigo;
-    private String n_nombre;
-    private float v_precio;
-    private float v_iva;
-    private int cod_categoria;
+    private int codigo;
+    private String nombre;
+    private float precio;
+    private float iva;
+    private int categoria;
 
-    public Producto(int k_codigo, String n_nombre, float v_precio, float v_iva, int cod_categoria) {
-        this.k_codigo = k_codigo;
-        this.n_nombre = n_nombre;
-        this.v_precio = v_precio;
-        this.v_iva = v_iva;
-        this.cod_categoria = cod_categoria;
+    public Producto(int codigo, String nombre, float precio, float iva) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.iva = iva;
     }
 
-    public int getK_codigo() {
-        return k_codigo;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setK_codigo(int k_codigo) {
-        this.k_codigo = k_codigo;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public String getN_nombre() {
-        return n_nombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setN_nombre(String n_nombre) {
-        this.n_nombre = n_nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public float getV_precio() {
-        return v_precio;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setV_precio(float v_precio) {
-        this.v_precio = v_precio;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
-    public float getV_iva() {
-        return v_iva;
+    public float getIva() {
+        return iva;
     }
 
-    public void setV_iva(float v_iva) {
-        this.v_iva = v_iva;
+    public void setIva(float iva) {
+        this.iva = iva;
     }
 
-    public int getCod_categoria() {
-        return cod_categoria;
+    public int getCategoria() {
+        return categoria;
     }
 
-    public void setCod_categoria(int cod_categoria) {
-        this.cod_categoria = cod_categoria;
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
+
     
+
     
 }

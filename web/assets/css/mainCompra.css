@@ -2525,7 +2525,7 @@
 		font-weight: 700;
 		height: 2.85em;
 		line-height: 2.95em;
-		min-width: 10em;
+		min-width: 3em;
 		padding: 0 1.5em;
 		text-align: center;
 		text-decoration: none;
@@ -4226,3 +4226,30 @@
 			}
 
 		}
+
+.carritoMas{
+    background-color: #51BAA4;
+	border-radius: 30% 30% 30% 30%;
+    -moz-border-radius: 30% 30% 30% 30%;
+    -webkit-border-radius: 30% 30% 30% 30%;
+    border: 0px solid #000000;
+  }
+.carritoMas:hover{
+	opacity: 0.70;
+  -moz-opacity: .70;
+  filter:alpha (opacity=70);
+
+}
+.carritoX{
+    background-color: #25383B;
+	border-radius: 30% 30% 30% 30%;
+    -moz-border-radius: 30% 30% 30% 30%;
+    -webkit-border-radius: 30% 30% 30% 30%;
+    border: 0px solid #000000;
+  }
+.carritoX:hover{
+	opacity: 0.10;
+  -moz-opacity: .10;
+  filter:alpha (opacity=10);
+
+}

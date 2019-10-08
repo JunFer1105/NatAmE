@@ -19,18 +19,17 @@ public class ProductoDAO {
     }
     
     public ArrayList obtenerProductos(String region){
-        sentencia = "SELECT P.K_CODIGO, P.N_NOMBRE, P.V_PRECIO, I.STOCK_PRODUCTO, R.K_CODIGO, R.N_NOMBRE FROM PRODUCTO P, INVENTARIO I, REGION R WHERE I.CODIGO_PRODUCTO=P.K_CODIGO AND I.CODIGO_REGION=R.K_CODIGO AND R.N_NOMBRE='"+region+"'";
+        sentencia = "SELECT P.K_CODIGO, P.N_NOMBRE, P.V_PRECIO, I.STOCK_PRODUCTO, R.K_CODIGO, R.N_NOMBRE FROM PRODUCT P, STOCK I, ZONE R WHERE I.CODIGO_PRODUCTO=P.K_CODIGO AND I.CODIGO_REGION=R.K_CODIGO AND R.N_NOMBRE='"+region+"'";
         System.out.println("Sentencia: "+sentencia);
         carrito = new ArrayList<Producto>();
         try{
             rs = st.executeQuery(sentencia);
+            System.out.println("Consulta sobre productos realizada con exito");
             while(rs.next()){
                 int p_cod=rs.getInt("K_CODIGO");
                 String p_nom=rs.getString("N_NOMBRE");
                 float p_precio=rs.getFloat("V_PRECIO");
-                float p_iva=rs.getFloat("V_IVA");
-                int p_cat=rs.getInt("COD_CATEGORIA");
-                prod = new Producto(p_cod, p_nom, p_precio, p_iva, p_cat);
+                prod = new Producto(p_cod, p_nom, p_precio, 19);
                 carrito.add(prod);
             }
             System.out.println("Carga de productos exitosa");

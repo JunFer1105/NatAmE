@@ -52,9 +52,9 @@ public class GestorPrincipal {
         return representanteDAO.cargarRepresentante(user);
     }
     
-    public ArrayList getProductos(){
+    public ArrayList getProductos(String region){
         ProductoDAO prodDAO = new ProductoDAO(st);
-        return prodDAO.obtenerProductos();
+        return prodDAO.obtenerProductos(region);
     }
     
     public ArrayList getRegionales(){

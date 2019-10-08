@@ -63,7 +63,7 @@ public class ServletRegiones extends HttpServlet {
 "\n" +
 "	<!-- Header -->\n" +
 "	<header id=\"header\" class=\"skel-layers-fixed\">\n" +
-"		<h1><a href=\"index.html\">NATAME</a></h1>\n" +
+"		<h1><a href=\"principal.html\">NATAME</a></h1>\n" +
 "		<a href=\"#nav\">Menu</a>\n" +
 "	</header>\n" +
 "\n" +
@@ -87,7 +87,7 @@ public class ServletRegiones extends HttpServlet {
 "			</header>\n" +
 "			<section>\n" +
 "				<h3>Seleccione</h3>\n" +
-"				<form method=\"post\" action=\"#\">\n" +
+"				<form method=\"post\" action=\"ServletProductos\">\n" +
 "					<div class=\"row uniform 50%\">\n" +
 "						<div class=\"12u$\">\n" +
 "							<div class=\"select-wrapper\">\n" +
@@ -95,7 +95,7 @@ public class ServletRegiones extends HttpServlet {
 "									<option value=\"\">- Regional -</option>");
             while (it.hasNext()){
                 Region reg=(Region) it.next();
-                out.println("<option value=\""+reg.getId()+"\">"+reg.getNombre()+"</option>");
+                out.println("<option value=\""+reg.getNombre()+"\">"+reg.getNombre()+"</option>");
             }
             
             
