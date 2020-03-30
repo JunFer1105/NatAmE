@@ -18,21 +18,24 @@ public class RepresentanteDAO {
     
     public String registrarRepresentante(Representante c,String contra){
         resultado="funciono";
-        sentencia="INSERT INTO CUSTOMER VALUES ('"+c.getId()+"','"+c.getTipo_doc()+"','"+c.getNombre()+"', '"+c.getApellido()+"','"+c.getCod_region()+"', '"+c.getEmail()+"', '"+c.getGenero()+"TO_DATE('"+c.getF_nacimiento() +"','DD/MM/YYYY'), TO_DATE(SYSDATE,'DD/MM/YYYY'),'"+c.getTelefono()+"','"+c.getDireccion()+"','"+c.getK_rangoRep()+"','"+c.getId_master()+"'";
-        System.out.println("sentencia");
+        sentencia="INSERT INTO SALESMAN VALUES ('"+c.getId()+"','"+c.getTipo_doc()+"','"+c.getNombre()+"', '"+c.getApellido()+"','"+c.getCod_region()+"', '"+c.getEmail()+"', '"+c.getGenero()+"',TO_DATE('"+c.getF_nacimiento() +"','DD/MM/YYYY'), TO_DATE(SYSDATE,'DD/MM/YYYY'),'"+c.getTelefono()+"','"+c.getDireccion()+"','"+c.getK_rangoRep()+"','"+c.getId_master()+"')";
+        System.out.println(sentencia);
         
         String sentencia2="CREATE USER "+c.getEmail()+" IDENTIFIED BY "+contra+" DEFAULT TABLESPACE DEF_USUARIOS TEMPORARY TABLESPACE TMP_USUARIOS";;
         String sentencia3="GRANT R_REPRESENTANTE TO "+c.getEmail();
+        
+        System.out.println(sentencia2);
         System.out.println(sentencia3);
         try {
             
             st.execute(sentencia2);
-            
             st.execute(sentencia3);          
             st.execute(sentencia);
+            st.execute("COMMIT");
             
         } catch (SQLException ex) {
-            resultado = "No se pudo registrar al representante"+ex.getMessage();
+            resultado = "No se pudo registrar al representante "+ex.getMessage();
+            
         }
         return resultado;
     } 

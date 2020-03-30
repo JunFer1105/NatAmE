@@ -78,7 +78,7 @@ public class ServletRegRepresentante extends HttpServlet {
 "			<!-- Form -->\n" +
 "			<section>\n" +
 "				<h3>Nuevo representante</h3>\n" +
-"				<form method=\"post\" action=\"ServletRegCliente\">\n" +
+"				<form method=\"post\" action=\"ServletRegistroRepresentante\">\n" +
 "					<div class=\"row uniform 50%\">\n" +
 "                                                <div class=\"6u 12u(xsmall)\">\n" +
 "                                                    <div class=\"select-wrapper\">\n" +
@@ -100,7 +100,7 @@ public class ServletRegRepresentante extends HttpServlet {
 "							<input type=\"text\" name=\"apellido\" id=\"apellido\" value=\"\" placeholder=\"Apellidos\" />\n" +
 "						</div><div class=\"6u 12u(xsmall)\">\n" +
 "                                                    <div class=\"select-wrapper\">\n" +
-"                                                    	<select name=\"tipo_doc\" id=\"tipo_doc\">\n" +
+"                                                    	<select name=\"cod_region\" id=\"cod_region\">\n" +
 "                                                            <option value=\"\">- Region -</option>");
             while (it.hasNext()){
                 Region reg=(Region) it.next();
