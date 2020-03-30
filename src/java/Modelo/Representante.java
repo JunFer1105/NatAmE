@@ -2,46 +2,55 @@ package Modelo;
 
 
 public class Representante {
-    private int id;
+    private String id;
+    private String tipo_doc;
     private String nombre;
     private String apellido;
+    private String cod_region;
     private String email;
     private String genero;
     private String f_nacimiento;
     private String f_contrato;
     private String telefono;
     private String direccion;
-    private int cod_region;
-    private int id_master;
+    private String id_master;
     private String k_rangoRep;
 
-    public Representante(int id, String nombre, String apellido, String email, String genero, String f_nacimiento, String f_contrato, String telefono, String direccion, int cod_region, int id_master, String k_rangoRep) {
+    public Representante(String id, String tipo_doc, String nombre, String apellido, String cod_region, String email, String genero, String f_nacimiento, String f_contrato, String telefono, String direccion, String id_master, String k_rangoRep) {
         this.id = id;
+        this.tipo_doc = tipo_doc;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cod_region = cod_region;
         this.email = email;
         this.genero = genero;
         this.f_nacimiento = f_nacimiento;
         this.f_contrato = f_contrato;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.cod_region = cod_region;
         this.id_master = id_master;
         this.k_rangoRep = k_rangoRep;
-        
-            
+    }
+    public Representante(String id){
+        this.id=id;
     }
 
-    public Representante(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
+    
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTipo_doc() {
+        return tipo_doc;
+    }
+
+    public void setTipo_doc(String tipo_doc) {
+        this.tipo_doc = tipo_doc;
     }
 
     public String getNombre() {
@@ -58,6 +67,14 @@ public class Representante {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getCod_region() {
+        return cod_region;
+    }
+
+    public void setCod_region(String cod_region) {
+        this.cod_region = cod_region;
     }
 
     public String getEmail() {
@@ -108,19 +125,11 @@ public class Representante {
         this.direccion = direccion;
     }
 
-    public int getCod_region() {
-        return cod_region;
-    }
-
-    public void setCod_region(int cod_region) {
-        this.cod_region = cod_region;
-    }
-
-    public int getId_master() {
+    public String getId_master() {
         return id_master;
     }
 
-    public void setId_master(int id_master) {
+    public void setId_master(String id_master) {
         this.id_master = id_master;
     }
 
@@ -131,6 +140,7 @@ public class Representante {
     public void setK_rangoRep(String k_rangoRep) {
         this.k_rangoRep = k_rangoRep;
     }
+
     
     
     

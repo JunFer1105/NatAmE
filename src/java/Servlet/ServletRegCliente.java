@@ -41,8 +41,10 @@ public class ServletRegCliente extends HttpServlet {
         String telefono=request.getParameter("telefono");
         String email=request.getParameter("eil");
         String ciudad=request.getParameter("ciudad");
+        String identificacion=request.getParameter("identificacion");
+        String tipo_doc=request.getParameter("tipo_doc");
         
-        String resultado=ges.regCliente(nombre, apellido, telefono, email, ciudad, clave2);
+        String resultado=ges.regCliente(identificacion, tipo_doc,nombre, apellido, telefono, email, ciudad, clave2);
         if(resultado.equals("funciono")){
             response.sendRedirect("principal.html");
         }else{

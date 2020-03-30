@@ -3,16 +3,18 @@ package Modelo;
 
 public class Cliente {
     
-    private int id;
+    private String identificacion;
+    private String tipo_doc;
     private String nombre;
     private String apellido;
     private String telefono;
     private String email;
-    private int id_representante;
+    private String id_representante;
     private String ciudad;
 
-    public Cliente(int id, String nombre, String apellido, String telefono, String email, int id_representante, String ciudad) {
-        this.id = id;
+    public Cliente(String identificacion, String tipo_doc, String nombre, String apellido, String telefono, String email, String id_representante, String ciudad) {
+        this.identificacion = identificacion;
+        this.tipo_doc = tipo_doc;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -21,24 +23,27 @@ public class Cliente {
         this.ciudad = ciudad;
     }
 
-    public Cliente(String nombre, String apellido, String telefono, String email, int id_representante, String ciudad) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.email = email;
-        this.id_representante = id_representante;
-        this.ciudad = ciudad;
+    
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getTipo_doc() {
+        return tipo_doc;
+    }
+
+    public void setTipo_doc(String tipo_doc) {
+        this.tipo_doc = tipo_doc;
     }
     
     
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     public String getNombre() {
         return nombre;
@@ -72,11 +77,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getId_representante() {
+    public String getId_representante() {
         return id_representante;
     }
 
-    public void setId_representante(int id_representante) {
+    public void setId_representante(String id_representante) {
         this.id_representante = id_representante;
     }
 

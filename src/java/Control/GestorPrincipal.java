@@ -39,9 +39,9 @@ public class GestorPrincipal {
         conector.close();
     }
     
-    public String regCliente(String nombre, String apellido, String telefono, String email,String ciudad, String clave){
+    public String regCliente(String identificacion, String tipo_doc,String nombre, String apellido, String telefono, String email,String ciudad, String clave){
         ClienteDAO clienteDao=new ClienteDAO(st);
-        Cliente cliente=new Cliente(nombre,apellido,telefono,email,getRepresentante().getId(),ciudad);
+        Cliente cliente=new Cliente(identificacion, tipo_doc, nombre,apellido,telefono,email,getRepresentante().getId(),ciudad);
         String auxiliar=clienteDao.registrarCliente(cliente,clave);
         System.out.println(auxiliar);
         return auxiliar;
