@@ -34,7 +34,8 @@ public class ServletProductos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         GestorPrincipal ges=(GestorPrincipal)session.getAttribute("Gestor");
-        String region = request.getParameter("category");
+        String region = request.getParameter("region");
+        String cliente = request.getParameter("cliente");
         ArrayList productos = ges.getProductos(region);
         Iterator it=productos.iterator();
         int contador=0;
@@ -190,6 +191,7 @@ public class ServletProductos extends HttpServlet {
 "        <header class=\"major special\">\n" +
 "            <h2>PRODUCTOS</h2>\n" +
 "            <p>Agregue al carro de compra, los productos que desee comprar.</p>\n" +
+                    "<p>Compra realizada en la regional: "+region+"   vendidos al cliende con identificacion:  "+cliente+".</p>"+
 "        </header>\n" +
 "        \n" +
 "        <div class=\"row uniform 50%\">\n" +

@@ -94,11 +94,11 @@ public class ServletPreCompra extends HttpServlet {
 "					<div class=\"row uniform 50%\">\n" +
 "						<div class=\"12u$\">\n" +
 "							<div class=\"select-wrapper\">\n" +
-"								<select name=\"category\" id=\"category\">\n" +
+"								<select name=\"region\" id=\"region\">\n" +
 "									<option value=\"\">- Regional -</option>");
             while (it.hasNext()){
                 Region reg=(Region) it.next();
-                out.println("<option value=\""+reg.getNombre()+"\">"+reg.getNombre()+"</option>");
+                out.println("<option value=\""+reg.getCodigo()+"\">"+reg.getNombre()+"</option>");
             }
             
             
@@ -107,7 +107,7 @@ public class ServletPreCompra extends HttpServlet {
 "						</div>\n" +
 "						<div class=\"12u$\">\n" +
 "							<div class=\"select-wrapper\">\n" +
-"								<select name=\"category\" id=\"category\">\n" +
+"								<select name=\"cliente\" id=\"cliente\">\n" +
 "									<option value=\"\">- Cliente -</option>");
             while (itClientes.hasNext()){
                 Cliente cli=(Cliente) itClientes.next();
