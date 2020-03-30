@@ -69,5 +69,19 @@ public class GestorPrincipal {
         RegionDAO regDAO = new RegionDAO(st);
         return regDAO.getRegionales();
     }
-   
+    
+    public ArrayList getClientes(){
+        ClienteDAO clienteDAO = new ClienteDAO(st);
+        ArrayList clientes=new ArrayList();
+        String auxiliar=getRepresentante().getId();
+        System.out.println(auxiliar);
+        if(auxiliar.equals("0")){
+            System.out.println("generando datos del cliente para la compar");
+            clientes.add(clienteDAO.getCliente(user));
+        }
+        else {
+            clientes=clienteDAO.getClientes(getRepresentante().getId());
+        }
+        return clientes;
+    }
 }

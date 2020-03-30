@@ -46,11 +46,10 @@ public class RepresentanteDAO {
         System.out.println(user);
         sentencia="SELECT * FROM SALESMAN WHERE O_EMAIL='"+user+"'"; 
         System.out.println(sentencia);
+        representante = new Representante(id);
         try {
             rs=st.executeQuery(sentencia);
             System.out.println("consulta sobre representantes realizada CON EXITO");
-            representante = new Representante(id);
-            System.out.println("Se creo que representante");
             while (rs.next()){
                 System.out.println("OBTENIENDO DATOS DE LA CONSULTA");
                 id =rs.getString("K_ID");

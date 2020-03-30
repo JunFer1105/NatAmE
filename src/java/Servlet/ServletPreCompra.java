@@ -6,6 +6,7 @@
 package Servlet;
 
 import Control.GestorPrincipal;
+import Modelo.Cliente;
 import Modelo.Region;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author elric
  */
-@WebServlet(name = "ServletRegiones", urlPatterns = {"/ServletRegiones"})
-public class ServletRegiones extends HttpServlet {
+@WebServlet(name = "ServletPreCompra", urlPatterns = {"/ServletPreCompra"})
+public class ServletPreCompra extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,6 +42,8 @@ public class ServletRegiones extends HttpServlet {
         GestorPrincipal ges=(GestorPrincipal)session.getAttribute("Gestor");
         ArrayList regionales=ges.getRegionales();
         Iterator it = regionales.iterator();
+        ArrayList clientes=ges.getClientes();
+        Iterator itClientes = clientes.iterator();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE HTML>\n" +
@@ -102,8 +105,20 @@ public class ServletRegiones extends HttpServlet {
             out.println("</select>\n" +
 "							</div>\n" +
 "						</div>\n" +
-"						\n" +
 "						<div class=\"12u$\">\n" +
+"							<div class=\"select-wrapper\">\n" +
+"								<select name=\"category\" id=\"category\">\n" +
+"									<option value=\"\">- Cliente -</option>");
+            while (itClientes.hasNext()){
+                Cliente cli=(Cliente) itClientes.next();
+                out.println("<option value=\""+cli.getIdentificacion()+"\">"+cli.getNombre()+" "+cli.getApellido()+"</option>");
+            }
+            
+            out.println("</select>\n" +
+"							</div>\n" +
+"						</div>\n");
+            
+            out.println("<div class=\"12u$\">\n" +
 "							<ul class=\"actions\">\n" +
 "								<li><input type=\"submit\" value=\"Buscar\" class=\"special\" /></li>\n" +
 "								<li><input type=\"reset\" value=\"Borrar\" /></li>\n" +

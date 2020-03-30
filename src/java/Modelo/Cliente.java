@@ -22,7 +22,14 @@ public class Cliente {
         this.id_representante = id_representante;
         this.ciudad = ciudad;
     }
-
+    
+    public Cliente(String identificacion, String tipo_doc, String nombre, String apellido, String id_representante){
+        this.identificacion = identificacion;
+        this.tipo_doc = tipo_doc;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.id_representante=id_representante;
+    }
     
 
     public String getIdentificacion() {
