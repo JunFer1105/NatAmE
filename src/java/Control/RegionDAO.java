@@ -23,7 +23,7 @@ public class RegionDAO {
     
     
     public ArrayList getRegionales(){
-        String consulta="SELECT k_codigo,n_nombre from ZONE";
+        String consulta="SELECT * from ZONE";
         System.out.println(consulta);
         try {
             rs=st.executeQuery(consulta);
@@ -31,9 +31,10 @@ public class RegionDAO {
             System.out.println("consulta sobre los representantes CON EXITO");
             while (rs.next()){
                 System.out.println("OBTENIENDO DATOS DE LA CONSULTA");
-                int id =rs.getInt("K_CODIGO");
+                String codigo =rs.getString("K_CODIGO");
                 String nombre=rs.getString("N_NOMBRE");
-                reg=new Region(id,nombre);               
+                String cod_pais = rs.getString("K_COD_PAIS");
+                reg=new Region(codigo,nombre,cod_pais);               
                 regiones.add(reg);
              }
         } catch (SQLException ex) {

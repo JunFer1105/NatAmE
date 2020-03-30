@@ -25,12 +25,12 @@
 	<section id="main" class="wrapper">
 		<div class="container">
 			<header class="major special">
-				<h2>REGISTRAR CLIENTE</h2>
-				<p>Registre un nuevo cliente en el sistema</p>
+				<h2>REGISTRAR REPRESENTANTE</h2>
+				<p>Registre un nuevo representante en el sistema, solo para representantes "master"</p>
 			</header>
 			<!-- Form -->
 			<section>
-				<h3>Nuevo cliente</h3>
+				<h3>Nuevo representante</h3>
 				<form method="post" action="ServletRegCliente">
 					<div class="row uniform 50%">
                                                 <div class="6u 12u(xsmall)">
@@ -52,16 +52,38 @@
 						<div class="6u 12u(xsmall)">
 							<input type="text" name="apellido" id="apellido" value="" placeholder="Apellidos" />
 						</div>
+                                                <!regiones con codigo !>
+                                                <div class="6u 12u(xsmall)">
+                                                    <div class="select-wrapper">
+                                                    	<select name="tipo_doc" id="tipo_doc">
+                                                            <option value="">- Region -</option>
+                                                            
+							</select>
+                                                    </div>
+						</div>
+                                                <!regiones con codigo !>
+                                                <div class="6u 12u(xsmall)">
+							<input type="text" name="email" id="email" value="" placeholder="Cuenta de usuario" />
+						</div>
+                                                <div class="6u 12u(xsmall)">
+                                                    <div class="select-wrapper">
+                                                    	<select name="genero" id="genero">
+                                                            <option value="">- Genero -</option>
+                                                            <option value="M">Masculino</option>
+                                                            <option value="F">Femenino</option>
+                                                        </select>
+                                                    </div>
+						</div>
+                                                <div class="6u 12u(xsmall)">
+							<input type="text" name="f_nacimiento" id="f_nacimiento" value="" placeholder="Fecha nacimiento dd/mm/aa" />
+						</div>
 						<div class="6u 12u(xsmall)">
 							<input type="text" name="telefono" id="telefono" value="" placeholder="Telefono" />
 						</div>
 						<div class="6u 12u(xsmall)">
-							<input type="text" name="eil" id="eil" value="" placeholder="Cuenta de usuario" />
+							<input type="text" name="direccion" id="direccion" value="" placeholder="Direccion" />
 						</div>
 						<div class="6u 12u(xsmall)">
-							<input type="text" name="ciudad" id="ciudad" value="" placeholder="Ciudad" />
-						</div>
-                                                <div class="6u 12u(xsmall)">
 							<input type="password" name="clave1" id="clave1" value="" placeholder="Clave" />
 						</div>
                                                 <div class="6u 12u(xsmall)">

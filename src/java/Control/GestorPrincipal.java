@@ -47,6 +47,14 @@ public class GestorPrincipal {
         return auxiliar;
     } 
     
+    public String regRepresentante(String id, String tipo_doc, String nombre, String apellido, String cod_region, String email, String genero, String f_nacimiento, String telefono, String direccion, String clave){
+        RepresentanteDAO representanteDAO=new RepresentanteDAO(st);
+        Representante representante = new Representante(id, tipo_doc, nombre, apellido, cod_region, email, genero, f_nacimiento, "00",telefono, direccion, getRepresentante().getId(), "44");
+        String auxiliar=representanteDAO.registrarRepresentante(representante,clave);
+        System.out.println(auxiliar);
+        return auxiliar;
+    }
+    
     public Representante getRepresentante(){
         RepresentanteDAO representanteDAO=new RepresentanteDAO(st);
         return representanteDAO.cargarRepresentante(user);
