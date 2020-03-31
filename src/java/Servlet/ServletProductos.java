@@ -36,6 +36,7 @@ public class ServletProductos extends HttpServlet {
         GestorPrincipal ges=(GestorPrincipal)session.getAttribute("Gestor");
         String region = request.getParameter("region");
         String cliente = request.getParameter("cliente");
+        session.setAttribute("cliente", cliente);
         ArrayList productos = ges.getProductos(region);
         Iterator it=productos.iterator();
         int contador=0;
@@ -60,6 +61,7 @@ public class ServletProductos extends HttpServlet {
 "                id: "+ prod.getCodigo()+",\n" +
 "                nombre: '"+prod.getNombre()+"',\n" +
 "                precio: "+prod.getPrecio()+"\n" +
+                
 "            }");
                 contador++;
             }
@@ -69,7 +71,8 @@ public class ServletProductos extends HttpServlet {
 "            let carrito = [];\n" +
 "            let total = 0;\n" +
 "            let $carrito = document.querySelector('#carrito');\n" +
-"            let $total = document.querySelector('#total');\n" +
+"            let $total = document.querySelector('#total');\n"
+                    + "let auxiliar = document.getElementById(\"auxiliar\");" +
 "            // Funciones\n" +
 "            function renderItems () {\n" +
 "                for (let info of baseDeDatos) {\n" +
@@ -133,7 +136,8 @@ public class ServletProductos extends HttpServlet {
 "\n" +
 "                    // Mezclamos nodos\n" +
 "                    miNodo.appendChild(miBoton);\n" +
-"                    $carrito.appendChild(miNodo);\n" +
+"                    $carrito.appendChild(miNodo);\n"
+                    + "auxiliar.value=carrito;" +
 "                })\n" +
 "            }\n" +
 "\n" +
@@ -201,14 +205,16 @@ public class ServletProductos extends HttpServlet {
 "            </div>\n" +
 "            <!-- Carrito -->\n" +
 "            <div class=\"6u 12u$(xsmall)\"> \n" +
-"                <form method=\"post\" action=\"#\">\n" +
+"                <form method=\"post\" action=\"ServletProcesarPedido\">\n" +
 "                    <h3>CARRO DE COMPRAS</h3>\n" +
 "                    <!-- Elementos del carrito -->\n" +
 "\n" +
 "                    <ul id=\"carrito\" class=\"list-group\"></ul>\n" +
 "                    <hr>\n" +
 "                    <!-- Precio total -->\n" +
-"                    <p >Total: &dollar;<span id=\"total\"></span></p>\n" +
+"                    <p >Total: &dollar;<span id=\"total\"></span></p>\n" 
+            + "<input type=\"hidden\" name=\"auxiliar\" id=\"auxiliar\" value=\"\">"+
+                            
 "                    <ul class=\"actions\">\n" +
 "                        <li><input type=\"submit\" value=\"Comprar\" class=\"special\" /></li>\n" +
 "\n" +

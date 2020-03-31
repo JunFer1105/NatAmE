@@ -68,6 +68,29 @@ public class ClienteDAO {
         return cliente;
     }
     
+    public Cliente getClienteById(String id){
+        sentencia = "SELECT * FROM CUSTOMER WHERE K_ID='"+id+"'";
+        System.out.println(sentencia);
+        try{
+            rs=st.executeQuery(sentencia);
+            System.out.println("consulta sobre el cliente realizada CON EXITO");
+            while (rs.next()){
+                System.out.println("OBTENIENDO DATOS DE LA CONSULTA");
+                String identificacion =rs.getString("K_ID");
+                String nombre=rs.getString("N_NOMBRE");
+                String apellido=rs.getString("N_APELLIDO");
+                String tipo_doc = rs.getString("I_TIPO_ID");
+                String id_representante=rs.getString("K_ID_REPRESENTANTE");
+                cliente=new Cliente(identificacion, tipo_doc, nombre,apellido, id_representante);               
+                
+             }
+        } catch (SQLException ex) {
+            resultado = "No se pudo leer el cliente al cliente"+ex.getMessage();
+            System.out.println(resultado);
+        }
+        return cliente;
+    }
+    
     public ArrayList getClientes(String id_representante){
         ArrayList clientes=null;
         String consulta="SELECT * from CUSTOMER WHERE K_ID_REPRESENTANTE='"+id_representante+"'";

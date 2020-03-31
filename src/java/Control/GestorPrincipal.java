@@ -1,6 +1,7 @@
 package Control;
 
 import Modelo.Cliente;
+import Modelo.Pedido;
 import Modelo.Representante;
 import Modelo.Producto;
 import java.sql.Connection;
@@ -19,7 +20,7 @@ public class GestorPrincipal {
     public boolean funciono=false;
     public String excepcion="";
     public String user;
-    
+        
     public GestorPrincipal(String usuario,String clave){
         user=usuario;
         ConexionBD con=new ConexionBD(usuario,clave);
@@ -83,5 +84,19 @@ public class GestorPrincipal {
             clientes=clienteDAO.getClientes(getRepresentante().getId());
         }
         return clientes;
+    }
+    public Cliente getClienteById(String id_cliente){
+        ClienteDAO clienteDAO = new ClienteDAO(st);
+        return(clienteDAO.getClienteById(id_cliente));
+    }
+    
+    public void realizarPedido(String pedido, String cliente){
+        PedidoDAO pedidoDAO = new PedidoDAO(st);
+        Cliente cli = getClienteById(cliente);
+        Pedido ped = new Pedido(cli.getIdentificacion(), cli.getId_representante());
+        System.out.println("Pedido creado");
+        String resultado_pedido=pedidoDAO.registrarPedido(ped);
+        System.out.println(resultado_pedido);
+        
     }
 }

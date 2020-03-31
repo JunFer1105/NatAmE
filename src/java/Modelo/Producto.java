@@ -4,14 +4,14 @@ public class Producto {
     private int codigo;
     private String nombre;
     private float precio;
-    private float iva;
+    private int cantidad;
     private int categoria;
 
-    public Producto(int codigo, String nombre, float precio, float iva) {
+    public Producto(int codigo, String nombre, float precio, int cantidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
-        this.iva = iva;
+        this.cantidad = cantidad;
     }
 
     public int getCodigo() {
@@ -38,20 +38,20 @@ public class Producto {
         this.precio = precio;
     }
 
-    public float getIva() {
-        return iva;
-    }
-
-    public void setIva(float iva) {
-        this.iva = iva;
-    }
-
     public int getCategoria() {
         return categoria;
     }
 
     public void setCategoria(int categoria) {
         this.categoria = categoria;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     
