@@ -38,23 +38,41 @@ public class ServletProcesarPedido extends HttpServlet {
         GestorPrincipal ges=(GestorPrincipal)session.getAttribute("Gestor");
         String carrito = request.getParameter("auxiliar");
         String cliente = (String)session.getAttribute("cliente");
-        ges.realizarPedido(carrito, cliente);
+        String resultado=ges.realizarPedido(carrito, cliente);
         
-        
-        
-        try (PrintWriter out = response.getWriter()) {
+        if (resultado.equals("Finalizado")){
+            response.sendRedirect("principal.html");
+        }else{
+            try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletProcesarPedido</title>");            
-            out.println("</head>");
+            out.println("<head>\n" +
+"		<title>Error NatAmE</title>\n" +
+"		<meta charset=\"utf-8\" />\n" +
+"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n" +
+"		<!--[if lte IE 8]><script src=\"assets/js/ie/html5shiv.js\"></script><![endif]-->\n" +
+"		<link rel=\"stylesheet\" href=\"assets/css/main.css\" />\n" +
+"		<!--[if lte IE 8]><link rel=\"stylesheet\" href=\"assets/css/ie8.css\" /><![endif]-->\n" +
+"		<!--[if lte IE 9]><link rel=\"stylesheet\" href=\"assets/css/ie9.css\" /><![endif]-->\n" +
+"	</head>");
+            
             out.println("<body>");
-            out.println("<h1>Servlet ServletProcesarPedido at " + carrito + cliente+ "</h1>");
+            out.println("<!-- Header -->\n" +
+"	<header id=\"header\" class=\"skel-layers-fixed\">\n" +
+"		<h1><a href=\"index.html\">NatAme</a></h1>\n" +
+"	</header>");
+            out.println("<h2>Ha ocurrido un error</h2>");
+            out.println("<p>El motor de base de datos ORACLE dice: <strong>" + resultado + "</strong></p>");
+            out.println("<ul class=\"actions\">\n" +
+"		<li><a href=\"index.html\" class=\"button alt small\">Regresar</a></li>\n" +
+"		</ul>");
+            
             out.println("</body>");
             out.println("</html>");
         }
-    }
+        }
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

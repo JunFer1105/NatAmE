@@ -24,6 +24,14 @@ public class Pedido {
         this.id_representante = id_representante;
     }
     
+    public Pedido(String codigo,String id_cliente, String id_representante, String fecha, float precio_total){
+        this.codigo=codigo;
+        this.id_cliente = id_cliente;
+        this.id_representante = id_representante;
+        this.fecha=fecha;
+        this.precio_total=precio_total;
+    }
+    
     
     public String getCodigo() {
         return codigo;

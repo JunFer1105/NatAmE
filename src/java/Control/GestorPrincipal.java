@@ -90,13 +90,22 @@ public class GestorPrincipal {
         return(clienteDAO.getClienteById(id_cliente));
     }
     
-    public void realizarPedido(String pedido, String cliente){
+    public String realizarPedido(String pedido, String cliente){
         PedidoDAO pedidoDAO = new PedidoDAO(st);
+        PedidoProductoDAO pedidoProductoDAO = new PedidoProductoDAO(st);
         Cliente cli = getClienteById(cliente);
         Pedido ped = new Pedido(cli.getIdentificacion(), cli.getId_representante());
         System.out.println("Pedido creado");
         String resultado_pedido=pedidoDAO.registrarPedido(ped);
-        System.out.println(resultado_pedido);
+        String resultado = pedidoProductoDAO.insertarProductosEnPedido(pedidoProductoDAO.getPedidosProductos(pedido, resultado_pedido));
+        System.out.println(resultado);
         
+        return resultado;
+        
+    }
+    
+    public ArrayList getPedidos(String cliente_id){
+        PedidoDAO pedidoDAO= new PedidoDAO(st);
+        return pedidoDAO.getPedidos(cliente_id);
     }
 }

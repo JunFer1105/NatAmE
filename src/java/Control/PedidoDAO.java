@@ -10,9 +10,10 @@ public class PedidoDAO {
     
     private Statement st;
     private ResultSet rs;
-    private ArrayList regiones;
+    private ArrayList pedidos;
     private String sentencia;
     private String resultado;
+    private Pedido pedido;
     
     public PedidoDAO (Statement st){
         this.st=st;
@@ -30,6 +31,27 @@ public class PedidoDAO {
             resultado = "No se pudo registrar el pedido" +ex.getMessage();
         }
         return resultado;
+    }
+    public ArrayList getPedidos(String id_cliente){
+        String sentencia1 = "SELECT * FROM WISH WHERE K_ID_CLIENTE='"+id_cliente+"'";
+        pedidos=new ArrayList();
+        try{
+            rs=st.executeQuery(sentencia1);
+            System.out.println(sentencia1);
+            while(rs.next()){
+                String k_codigo=rs.getString("K_CODIGO");
+                String id_cli=rs.getString("K_ID_CLIENTE");
+                String id_representante=rs.getString("K_COD_REPRESENTANTE");
+                String fecha=rs.getString("F_FECHA_PEDIDO");
+                float valor_pedido=rs.getFloat("V_PRECIO_TOTAL");
+                pedido = new Pedido(k_codigo,id_cli,id_representante,fecha,valor_pedido);
+                pedidos.add(pedido);
+            }
+        }catch(SQLException ex){
+            resultado = "No se pudo obtner los registros de pedido" +ex.getMessage();
+            System.out.println(resultado);
+        }
+        return pedidos;
     }
     
 }
